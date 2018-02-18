@@ -11,12 +11,17 @@ Before you can talk to you Ikea gateway/hub you need to install the coap-client:
 ## Authenticate
 First we need to create a preshared key. This key can then be used to authenticate yourself:
 ```
-coap-client -m put -u "$USERNAME" -k "$GATEWAYCODE" -e '{ "3311": [{ "5850": 0 }] }' "coaps://$GATEWAYIP:5684/15001/65537"
+coap-client -m post -u "Client_identity" -k "$GATEWAYCODE" -e '{"9090":"$USERNAME"}' "coaps://$GATEWAYIP:5684/15011/9063"
 ```
 
 * $USERNAME: Can be a random name as long as you use it in the other requests you want to make
 * $GATEWAYCODE: Is the code at the bottom of your Gateway/HUB
 * $GATEWAYIP: Is the IP of your Gateway/HUB
+
+This will then respond something like this:
+```
+{"9091":"$PRESHARED_KEY","9029":"1.3.0014"}
+```
 
 ## The URL
 To control a bulb you need to know it's URL. This is very easy. The URL's all begin with `coaps://192.168.0.10:5684/15001`
@@ -29,7 +34,7 @@ coaps://192.168.0.10:5684/15001/65537
 ## Your first bulb
 To set the brightness of your first bulb to 50% use the following code:
 ```
-coap-client -m put -u "$USERNAME" -k "$GATEWAYCODE" -e '{ "3311": [{ "5851": 127 }] }' "coaps://$GATEWAYIP:5684/15001/65537"
+coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "3311": [{ "5851": 127 }] }' "coaps://$GATEWAYIP:5684/15001/65537"
 ```
 
 ## Payload
