@@ -55,6 +55,15 @@ Here is an example payload for coap-client with explanation what each field does
 ## Colors
 The following colors where taken form the IKEA Android app (these could be used in field `"5706"`):
 
+### Cold / Warm Bulbs
+```
+'f5faf6': 'White',
+'f1e0b5': 'Warm',
+'efd275': 'Glow'
+```
+
+### RGB Bulbs
+
 ```
 '4a418a': 'Blue',
 '6c83ba': 'Light Blue',
