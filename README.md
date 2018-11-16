@@ -66,6 +66,7 @@ Here is an example payload for coap-client with explanation what each field does
 
 ### Colors
 The following colors where taken from the IKEA Android app (these could be used in field `"5706"`):
+
 Please note: If you are using another HEX value then these the lamp will default to the Warm Glow color.
 
 #### Cold / Warm Bulbs
@@ -102,7 +103,9 @@ Please note: If you are using another HEX value then these the lamp will default
 
 ### More Colors
 Ikea RGB bulbs can produce more colors then the list above.
+
 They can produce all colors in the xyY color space.
+
 To understand how this color space works take a look at the diagram below:
 
 ![xyY Color Space](https://user-images.githubusercontent.com/7496187/48645383-d4192380-e9e5-11e8-8466-5de1248720ca.png)
@@ -114,6 +117,7 @@ coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "3311": ["5709": 655
 
 ## Plug
 The ikea plug was introduced around oktober 2018.
+
 Also this device can be controlled with the same api.
 
 ### Your first plug
