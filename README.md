@@ -4,12 +4,14 @@ How can you communicate to your ikea tradfri gateway/hub through coap-client
 
 ## Install coap-client
 Before you can talk to you Ikea gateway/hub you need to install the coap-client:
-1. Download the `install-coap-client.sh` form github.
+1. Download the `install-coap-client.sh` from github.
 2. Chmod the file so you can run it.
 3. Run the file as root.
 
 ## Authenticate
 First we need to create a preshared key. This key can then be used to authenticate yourself:
+Please note: this key will expire if you don't use it in 6 weeks from activation. Every time you use this key the time will be extended accordingly.
+
 ```
 coap-client -m post -u "Client_identity" -k "$GATEWAYCODE" -e '{"9090":"$USERNAME"}' "coaps://$GATEWAYIP:5684/15011/9063"
 ```
@@ -24,11 +26,11 @@ This will then respond something like this:
 ```
 
 ## The URL
-To control a bulb you need to know it's URL. This is very easy. The URL's all begin with `coaps://192.168.0.10:5684/15001`
+To control a bulb you need to know it's URL. This is very easy. The URL's all begin with `coaps://$GATEWAYIP:5684/15001`
 
 The bulbs will have addresses beginning at `65537` for the first bulb, `65538` for the second, and so on. So, to control the first bulb, you would use the following url:
 ```
-coaps://192.168.0.10:5684/15001/65537
+coaps://$GATEWAYIP:5684/15001/65537
 ```
 
 ## Your first bulb
@@ -45,7 +47,9 @@ Here is an example payload for coap-client with explanation what each field does
     {
       "5850": 1, // on / off
       "5851": 254, // dimmer (1 to 254)
-      "5706": "f1e0b5", // color in HEX
+      "5706": "f1e0b5", // color in HEX (Don't use in combination with: color X and/or color Y)
+      "5709": 65535, // color X (Only use in combination with color Y)
+      "5710": 65535, // color Y (Only use in combination with color X)
       "5712": 10 // transition time (fade time)
     }
   ]
@@ -53,7 +57,8 @@ Here is an example payload for coap-client with explanation what each field does
 ```
 
 ## Colors
-The following colors where taken form the IKEA Android app (these could be used in field `"5706"`):
+The following colors where taken from the IKEA Android app (these could be used in field `"5706"`):
+Please note: If you are using another HEX value then these the lamp will default to the Warm Glow color.
 
 ### Cold / Warm Bulbs
 ```
@@ -86,6 +91,25 @@ The following colors where taken form the IKEA Android app (these could be used 
 'f2eccf': 'Sunrise',
 'f5faf6': 'Cool white'
 ```
+
+### More Colors
+Ikea RGB bulbs can produce more colors then the list above.
+They can produce all colors in the xyY color space.
+To understand how this color space works take a look at the diagram below:
+
+![xyY Color Space](https://user-images.githubusercontent.com/7496187/48645383-d4192380-e9e5-11e8-8466-5de1248720ca.png)
+
+To create your own color you need define two values (x and y) from 0 to 65535 with this command:
+```
+coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "3311": ["5709": 65535, "5710": 65535] }' "coaps://$GATEWAYIP:5684/15001/65537"
+```
+
+### Get a list of all bulbs
+To get a complete list of all bulbs use the following command:
+```
+coap-client -m get -u "$USERNAME" -k "$PRESHARED_KEY" "coaps://$GATEWAYIP:5684/15001
+```
+
 ## License
 
 MIT
