@@ -33,13 +33,21 @@ The bulbs will have addresses beginning at `65537` for the first bulb, `65538` f
 coaps://$GATEWAYIP:5684/15001/65537
 ```
 
-## Your first bulb
-To set the brightness of your first bulb to 50% use the following code:
+## Get a list of all devices
+To get a complete list of all devices connected to your hub use the following command:
+```
+coap-client -m get -u "$USERNAME" -k "$PRESHARED_KEY" "coaps://$GATEWAYIP:5684/15001
+```
+
+## Bulbs
+
+### Your first bulb
+To set the brightness of your first bulb to 50% use the following command:
 ```
 coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "3311": [{ "5851": 127 }] }' "coaps://$GATEWAYIP:5684/15001/65537"
 ```
 
-## Payload
+### Payload
 Here is an example payload for coap-client with explanation what each field does:
 ```
 {
@@ -56,18 +64,18 @@ Here is an example payload for coap-client with explanation what each field does
 }
 ```
 
-## Colors
+### Colors
 The following colors where taken from the IKEA Android app (these could be used in field `"5706"`):
 Please note: If you are using another HEX value then these the lamp will default to the Warm Glow color.
 
-### Cold / Warm Bulbs
+#### Cold / Warm Bulbs
 ```
 'f5faf6': 'White',
 'f1e0b5': 'Warm',
 'efd275': 'Glow'
 ```
 
-### RGB Bulbs
+#### RGB Bulbs
 
 ```
 '4a418a': 'Blue',
@@ -104,10 +112,27 @@ To create your own color you need define two values (x and y) from 0 to 65535 wi
 coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "3311": ["5709": 65535, "5710": 65535] }' "coaps://$GATEWAYIP:5684/15001/65537"
 ```
 
-### Get a list of all bulbs
-To get a complete list of all bulbs use the following command:
+## Plug
+The ikea plug was introduced around oktober 2018.
+Also this device can be controlled with the same api.
+
+### Your first plug
+To turn on a plug use the following command:
 ```
-coap-client -m get -u "$USERNAME" -k "$PRESHARED_KEY" "coaps://$GATEWAYIP:5684/15001
+coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "3311": [{ "5850": 1 }] }' "coaps://$GATEWAYIP:5684/15001/65537"
+```
+
+### Payload
+Here is an example payload for coap-client with explanation what each field does:
+```
+{
+  "3311": [
+    {
+      "5850": 1, // on / off
+      "5851": 254 // dimmer (0 to 254) (As of writing there arn't any dimmable plugs. Value's above 0 will simply turn on the plug)
+    }
+  ]
+}
 ```
 
 ## License
