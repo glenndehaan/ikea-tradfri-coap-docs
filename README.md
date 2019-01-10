@@ -36,7 +36,7 @@ coaps://$GATEWAYIP:5684/15001/65537
 ## Get a list of all devices
 To get a complete list of all devices connected to your hub use the following command:
 ```
-coap-client -m get -u "$USERNAME" -k "$PRESHARED_KEY" "coaps://$GATEWAYIP:5684/15001
+coap-client -m get -u "$USERNAME" -k "$PRESHARED_KEY" "coaps://$GATEWAYIP:5684/15001"
 ```
 
 ## Bulbs
