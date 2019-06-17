@@ -2,6 +2,26 @@
 
 How can you communicate to your ikea tradfri gateway/hub through coap-client. Tested with Tradfri hub version 1.3.0014 and 1.8.0025.
 
+## Table of Contents
+   * [IKEA Tradfri COAP Docs](#ikea-tradfri-coap-docs)
+      * [Table of Contents](#table-of-contents)
+      * [Install coap-client](#install-coap-client)
+      * [Authenticate](#authenticate)
+      * [The URL](#the-url)
+      * [Get a list of all devices](#get-a-list-of-all-devices)
+      * [Get info about a specific device](#get-info-about-a-specific-device)
+      * [Bulbs](#bulbs)
+         * [Your first bulb](#your-first-bulb)
+         * [Payload](#payload)
+         * [Colors](#colors)
+            * [Cold / Warm Bulbs](#cold--warm-bulbs)
+            * [RGB Bulbs](#rgb-bulbs)
+         * [More Colors](#more-colors)
+      * [Plug](#plug)
+         * [Your first plug](#your-first-plug)
+         * [Payload](#payload-1)
+      * [License](#license)
+
 ## Install coap-client
 Before you can talk to you Ikea gateway/hub you need to install the coap-client:
 1. Download the `install-coap-client.sh` from github.
