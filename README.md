@@ -24,6 +24,16 @@ How can you communicate to your ikea tradfri gateway/hub through coap-client. Te
       * [Plug](#plug)
          * [Your first plug](#your-first-plug)
          * [Payload](#payload-1)
+      * [Endpoints](#endpoints)
+         * [Global](#global)
+         * [Gateway](#gateway)
+      * [Codes](#codes)
+         * [Devices](#devices)
+         * [Device parameters](#device-parameters)
+         * [Scene parameters](#scene-parameters)
+         * [Sensor parameters](#sensor-parameters)
+         * [Bulb parameters](#bulb-parameters)
+         * [Plug parameters](#plug-parameters)
       * [License](#license)
 
 ## Install coap-client
@@ -205,6 +215,78 @@ Here is an example payload for coap-client with explanation what each field does
   ]
 }
 ```
+
+## Endpoints
+
+### Global
+| URL                           | Description            |
+|-------------------------------|------------------------|
+| coaps://$GATEWAYIP:5684/15001 | Devices endpoint       |
+| coaps://$GATEWAYIP:5684/15004 | Groups endpoint        |
+| coaps://$GATEWAYIP:5684/15005 | Scenes endpoint        |
+| coaps://$GATEWAYIP:5684/15006 | Notifications endpoint |
+| coaps://$GATEWAYIP:5684/15010 | Smart Tasks endpoint   |
+
+### Gateway
+| URL                                 | Description                     |
+|-------------------------------------|---------------------------------|
+| coaps://$GATEWAYIP:5684/15011/9030  | Reboot gateway endpoint         |
+| coaps://$GATEWAYIP:5684/15011/9031  | Reset gateway endpoint          |
+| coaps://$GATEWAYIP:5684/15011/9034  | UpdateFirmware gateway endpoint |
+| coaps://$GATEWAYIP:5684/15011/15012 | Gateway details endpoint        |
+
+## Codes
+
+### Devices
+| Code | Description   | Type  |
+|------|---------------|-------|
+| 3300 | Motion Sensor | Array |
+| 3311 | Light/Bulb    | Array |
+| 3312 | Plug          | Array |
+
+### Device parameters
+| Code | Description          | Type   |
+|------|----------------------|--------|
+| 9001 | Device name          | String |
+| 9002 | Device creation date | Int    |
+| 9003 | Device instance ID   | Int    |
+
+### Scene parameters
+| Code  | Description         | Type    |
+|-------|---------------------|---------|
+| 9058  | Scene Active State  | Boolean |
+| 9057  | Device Index ID     | Int     |
+| 9068  | Is Scene Predefined | Boolean |
+| 15013 | Light Settings      | Array   |
+
+### Sensor parameters
+| Code | Description                         | Type    |
+|------|-------------------------------------|---------|
+| 5601 | Minimum Measured Value              | Float   |
+| 5602 | Maximum Measured Value              | Float   |
+| 5603 | Minimum Range Value                 | Float   |
+| 5604 | Maximum Range Value                 | Float   |
+| 5605 | Reset Minimum/Maximum Measure Value | Boolean |
+| 5700 | Sensor Value                        | Float   |
+
+### Bulb parameters
+| Code | Description       | Type       |
+|------|-------------------|------------|
+| 5706 | Color HEX String  | HEX String |
+| 5707 | Hue               | Int        |
+| 5708 | Saturation        | Int        |
+| 5709 | colorX            | Int        |
+| 5710 | colorY            | Int        |
+| 5711 | Color Temperature | Int        |
+| 5712 | Transition Time   | Float      |
+| 5850 | On/Off            | Boolean    |
+| 5851 | Brightness        | Int        |
+
+### Plug parameters
+| Code | Description | Type    |
+|------|-------------|---------|
+| 5850 | On/Off      | Boolean |
+| 5851 | Brightness  | Int     |
 
 ## License
 
