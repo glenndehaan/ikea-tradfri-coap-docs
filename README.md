@@ -29,7 +29,8 @@ How can you communicate to your ikea tradfri gateway/hub through coap-client. Te
          * [Gateway](#gateway)
       * [Codes](#codes)
          * [Devices](#devices)
-         * [Device parameters](#device-parameters)
+         * [General parameters](#general-parameters)
+         * [Group parameters](#group-parameters)
          * [Scene parameters](#scene-parameters)
          * [Sensor parameters](#sensor-parameters)
          * [Bulb parameters](#bulb-parameters)
@@ -244,12 +245,21 @@ Here is an example payload for coap-client with explanation what each field does
 | 3311 | Light/Bulb    | Array |
 | 3312 | Plug          | Array |
 
-### Device parameters
-| Code | Description          | Type   |
-|------|----------------------|--------|
-| 9001 | Device name          | String |
-| 9002 | Device creation date | Int    |
-| 9003 | Device instance ID   | Int    |
+### General parameters
+| Code | Description   | Type   |
+|------|---------------|--------|
+| 9001 | Name          | String |
+| 9002 | Creation date | Int    |
+| 9003 | Instance ID   | Int    |
+
+### Group parameters
+| Code | Description             | Type    |
+|------|-------------------------|---------|
+| 5712 | Transition Time         | Float   |
+| 5850 | On/Off                  | Boolean |
+| 5851 | Brightness              | Int     |
+| 9018 | Accessory Link (Remote) | Array   |
+| 9039 | Scene ID                | Int     |
 
 ### Scene parameters
 | Code  | Description         | Type    |
