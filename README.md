@@ -238,7 +238,7 @@ Here is an example payload for coap-client with explanation what each field does
 {
   "15015": [
     {
-      "5536": 1, // position
+      "5536": 0.0, // position
     }
   ]
 }
