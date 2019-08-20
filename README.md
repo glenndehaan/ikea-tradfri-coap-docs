@@ -24,6 +24,9 @@ How can you communicate to your ikea tradfri gateway/hub through coap-client. Te
       * [Plug](#plug)
          * [Your first plug](#your-first-plug)
          * [Payload](#payload-1)
+      * [Blind](#blind)
+         * [Your first blind](#your-first-blind)
+         * [Payload](#payload-2)
       * [Endpoints](#endpoints)
          * [Global](#global)
          * [Gateway](#gateway)
@@ -35,6 +38,7 @@ How can you communicate to your ikea tradfri gateway/hub through coap-client. Te
          * [Sensor parameters](#sensor-parameters)
          * [Bulb parameters](#bulb-parameters)
          * [Plug parameters](#plug-parameters)
+         * [Blind parameters](#blind-parameters)
       * [License](#license)
 
 ## Install coap-client
@@ -217,6 +221,29 @@ Here is an example payload for coap-client with explanation what each field does
 }
 ```
 
+## Blind
+The ikea blinds where introduced around august 2019.
+
+Also this device can be controlled with the same api.
+
+### Your first blind
+To change position of a blind use the following command:
+```
+coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "15015": [{ "5536": 0.0 }] }' "coaps://$GATEWAYIP:5684/15001/$DEVICEID"
+```
+
+### Payload
+Here is an example payload for coap-client with explanation what each field does:
+```
+{
+  "15015": [
+    {
+      "5536": 1, // position
+    }
+  ]
+}
+```
+
 ## Endpoints
 
 ### Global
@@ -239,11 +266,12 @@ Here is an example payload for coap-client with explanation what each field does
 ## Codes
 
 ### Devices
-| Code | Description   | Type  |
-|------|---------------|-------|
-| 3300 | Motion Sensor | Array |
-| 3311 | Light/Bulb    | Array |
-| 3312 | Plug          | Array |
+| Code  | Description   | Type  |
+|-------|---------------|-------|
+| 3300  | Motion Sensor | Array |
+| 3311  | Light/Bulb    | Array |
+| 3312  | Plug          | Array |
+| 15015 | Blind         | Array |
 
 ### General parameters
 | Code | Description   | Type   |
@@ -297,6 +325,11 @@ Here is an example payload for coap-client with explanation what each field does
 |------|-------------|---------|
 | 5850 | On/Off      | Boolean |
 | 5851 | Brightness  | Int     |
+
+### Blind parameters
+| Code | Description | Type  |
+|------|-------------|-------|
+| 5536 | Position    | Float |
 
 ## License
 
