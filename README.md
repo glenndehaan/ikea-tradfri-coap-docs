@@ -229,7 +229,7 @@ Also this device can be controlled with the same api.
 ### Your first blind
 To change position of a blind use the following command:
 ```
-coap-client -m put -u "$USERNAME" -k "$PRESHARED_KEY" -e '{ "15015": [{ "5536": 0.0 }] }' "coaps://$GATEWAYIP:5684/15001/$DEVICEID"
+coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "15015": [{ "5536": 0.0 }] }' "coaps://$TF_GATEWAYIP:5684/15001/$TF_DEVICEID"
 ```
 
 ### Payload
