@@ -52,7 +52,7 @@ First we need to create a preshared key. This key can then be used to authentica
 Please note: this key will expire if you don't use it in 6 weeks from activation. Every time you use this key the time will be extended accordingly.
 
 ```
-coap-client -m post -u "Client_identity" -k "$TF_GATEWAYCODE" -e '{"9090":"$TF_USERNAME"}' "coaps://$TF_GATEWAYIP:5684/15011/9063"
+coap-client -m post -u "Client_identity" -k "$TF_GATEWAYCODE" -e "{\"9090\":\"$TF_USERNAME\"}" "coaps://$TF_GATEWAYIP:5684/15011/9063"
 ```
 
 * $TF_USERNAME: Can be a random name as long as you use it in the other requests you want to make
