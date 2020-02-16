@@ -111,7 +111,7 @@ To add a member device to a group, use this command:
 coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{"9038": $TF_GROUPID, "9003": [ $TF_DEVICEID ] }' "coaps://$TF_GATEWAYIP:5684/15004/add"
 ```
 
-## Remove device from a group
+## Remove device from a specific group
 To remove a member device from a group, use this command:
 ```
 coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{"9038": $TF_GROUPID, "9003": [ $TF_DEVICEID ] }' "coaps://$TF_GATEWAYIP:5684/15004/remove"
