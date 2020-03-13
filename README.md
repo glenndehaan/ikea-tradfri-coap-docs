@@ -320,7 +320,7 @@ Here is an example payload for coap-client with explanation what each field does
 ### Group parameters
 | Code | Description             | Type    |
 |------|-------------------------|---------|
-| 5712 | Transition Time         | Float   |
+| 5712 | Transition Time         | Int     |
 | 5850 | On/Off                  | Boolean |
 | 5851 | Brightness              | Int     |
 | 9018 | Accessory Link (Remote) | Array   |
@@ -343,7 +343,7 @@ Here is an example payload for coap-client with explanation what each field does
 | 5709 | colorX            | Int        |
 | 5710 | colorY            | Int        |
 | 5711 | Color Temperature | Int        |
-| 5712 | Transition Time   | Float      |
+| 5712 | Transition Time   | Int        |
 | 5850 | On/Off            | Boolean    |
 | 5851 | Brightness        | Int        |
 
