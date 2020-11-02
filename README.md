@@ -300,6 +300,7 @@ Here is an example payload for coap-client with explanation what each field does
 | coaps://$TF_GATEWAYIP:5684/15011/9034  | UpdateFirmware gateway endpoint |
 | coaps://$TF_GATEWAYIP:5684/15011/15012 | Gateway details endpoint        |
 
+Please note: You need to use `-m post` for the reboot command to work.
 ## Codes
 
 ### Devices
