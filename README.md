@@ -67,7 +67,7 @@ coap-client -m post -u "Client_identity" -k "$TF_GATEWAYCODE" -e "{\"9090\":\"$T
 * $TF_GATEWAYIP: Is the IP of your Gateway/HUB
 
 This will then respond something like this:
-```
+```json5
 {
   "9091": "$TF_PRESHARED_KEY", // Preshared Key
   "9029": "1.3.0014" // Gateway Firmware version
@@ -169,7 +169,7 @@ coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "3311": [{ "58
 
 ### Payload
 Here is an example payload for coap-client with explanation what each field does:
-```
+```json5
 {
   "3311": [
     {
@@ -247,7 +247,7 @@ coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "3312": [{ "58
 
 ### Payload
 Here is an example payload for coap-client with explanation what each field does:
-```
+```json5
 {
   "3312": [
     {
@@ -271,7 +271,7 @@ coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "15015": [{ "5
 
 ### Payload
 Here is an example payload for coap-client with explanation what each field does:
-```
+```json5
 {
   "15015": [
     {
