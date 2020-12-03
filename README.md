@@ -1,52 +1,55 @@
-# IKEA Tradfri COAP Docs
+# IKEA Tradfri CoAP Docs
 
-How can you communicate to your ikea tradfri gateway/hub through coap-client. Tested with Tradfri hub version 1.3.0014 and 1.8.0025.
+How can you communicate to your ikea tradfri gateway/hub through coap-client. Tested with Tradfri hub version 1.3.0014, 1.8.0025 and 1.12.0.
 
 ## Table of Contents
-   * [IKEA Tradfri COAP Docs](#ikea-tradfri-coap-docs)
-      * [Table of Contents](#table-of-contents)
-      * [Install coap-client](#install-coap-client)
-      * [Authenticate](#authenticate)
-      * [The URL](#the-url)
-      * [Devices](#devices)
-         * [Get a list of all devices](#get-a-list-of-all-devices)
-         * [Get info about a specific device](#get-info-about-a-specific-device)
-      * [Groups](#groups)
-         * [Get a list of all groups](#get-a-list-of-all-groups)
-         * [Get info about a specific group](#get-info-about-a-specific-group)
-         * [Add device to a specific group](#add-device-to-a-specific-group)
-         * [Remove device from a specific group](#remove-device-from-a-specific-group)
-      * [Scenes](#scenes)
-         * [Get a list of all scenes](#get-a-list-of-all-scenes)
-         * [Get info about a specific scene](#get-info-about-a-specific-scene)
-      * [Endpoints](#endpoints)
-         * [List all available endpoints](#list-all-available-endpoints)
-      * [Sensor](#sensor)
-      * [Bulbs](#bulbs)
-         * [Your first bulb](#your-first-bulb)
-         * [Payload](#payload)
-         * [Colors](#colors)
-            * [Cold / Warm Bulbs](#cold--warm-bulbs)
-            * [RGB Bulbs](#rgb-bulbs)
-         * [More Colors](#more-colors)
-      * [Plug](#plug)
-         * [Your first plug](#your-first-plug)
-         * [Payload](#payload-1)
-      * [Blind](#blind)
-         * [Your first blind](#your-first-blind)
-         * [Payload](#payload-2)
-      * [Endpoints](#endpoints-1)
-         * [Global](#global)
-         * [Gateway](#gateway)
-      * [Codes](#codes)
-         * [Devices](#devices-1)
-         * [General parameters](#general-parameters)
-         * [Group parameters](#group-parameters)
-         * [Scene parameters](#scene-parameters)
-         * [Bulb parameters](#bulb-parameters)
-         * [Plug parameters](#plug-parameters)
-         * [Blind parameters](#blind-parameters)
-      * [License](#license)
+  * [IKEA Tradfri CoAP Docs](#ikea-tradfri-coap-docs)
+     * [Table of Contents](#table-of-contents)
+     * [Install coap-client](#install-coap-client)
+     * [Authenticate](#authenticate)
+     * [The URL](#the-url)
+     * [Devices](#devices)
+        * [Get a list of all devices](#get-a-list-of-all-devices)
+        * [Get info about a specific device](#get-info-about-a-specific-device)
+     * [Groups](#groups)
+        * [Get a list of all groups](#get-a-list-of-all-groups)
+        * [Get info about a specific group](#get-info-about-a-specific-group)
+        * [Add device to a specific group](#add-device-to-a-specific-group)
+        * [Remove device from a specific group](#remove-device-from-a-specific-group)
+     * [Scenes](#scenes)
+        * [Get a list of all scenes](#get-a-list-of-all-scenes)
+        * [Get info about a specific scene](#get-info-about-a-specific-scene)
+     * [Endpoints](#endpoints)
+        * [List all available endpoints](#list-all-available-endpoints)
+     * [Sensor](#sensor)
+     * [Bulbs](#bulbs)
+        * [Your first bulb](#your-first-bulb)
+        * [Payload](#payload)
+        * [Colors](#colors)
+           * [Cold / Warm Bulbs](#cold--warm-bulbs)
+           * [RGB Bulbs](#rgb-bulbs)
+        * [More Colors](#more-colors)
+     * [Plug](#plug)
+        * [Your first plug](#your-first-plug)
+        * [Payload](#payload-1)
+     * [Blind](#blind)
+        * [Your first blind](#your-first-blind)
+        * [Payload](#payload-2)
+     * [Endpoints](#endpoints-1)
+        * [Global](#global)
+        * [Gateway](#gateway)
+     * [Codes](#codes)
+        * [Devices](#devices-1)
+        * [General parameters](#general-parameters)
+        * [Group parameters](#group-parameters)
+        * [Scene parameters](#scene-parameters)
+        * [Bulb parameters](#bulb-parameters)
+        * [Plug parameters](#plug-parameters)
+        * [Blind parameters](#blind-parameters)
+     * [CoAP Protocol](#coap-protocol)
+        * [CoAP Response Codes](#coap-response-codes)
+        * [CoAP Method Codes](#coap-method-codes)
+     * [License](#license)
 
 ## Install coap-client
 Before you can talk to you Ikea gateway/hub you need to install the coap-client:
@@ -127,6 +130,7 @@ coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{"9038": $TF_GRO
 ```
 
 ## Scenes
+Note: scenes where formerly known as moods inside the IKEA Tradfri app. This change was introduced at version 1.12.0
 
 ### Get a list of all scenes
 To get a complete list of all scenes use the following command:
@@ -358,6 +362,51 @@ Please note: You need to use `-m post` for the reboot command to work.
 | Code | Description | Type  |
 |------|-------------|-------|
 | 5536 | Position    | Float |
+
+## CoAP Protocol
+
+### CoAP Response Codes
+Below is a snippet from https://tools.ietf.org/html/rfc7252 containing the default CoAP response codes:
+```
++------+------------------------------+-----------+
+| Code | Description                  | Reference |
++------+------------------------------+-----------+
+| 2.01 | Created                      | [RFC7252] |
+| 2.02 | Deleted                      | [RFC7252] |
+| 2.03 | Valid                        | [RFC7252] |
+| 2.04 | Changed                      | [RFC7252] |
+| 2.05 | Content                      | [RFC7252] |
+| 4.00 | Bad Request                  | [RFC7252] |
+| 4.01 | Unauthorized                 | [RFC7252] |
+| 4.02 | Bad Option                   | [RFC7252] |
+| 4.03 | Forbidden                    | [RFC7252] |
+| 4.04 | Not Found                    | [RFC7252] |
+| 4.05 | Method Not Allowed           | [RFC7252] |
+| 4.06 | Not Acceptable               | [RFC7252] |
+| 4.12 | Precondition Failed          | [RFC7252] |
+| 4.13 | Request Entity Too Large     | [RFC7252] |
+| 4.15 | Unsupported Content-Format   | [RFC7252] |
+| 5.00 | Internal Server Error        | [RFC7252] |
+| 5.01 | Not Implemented              | [RFC7252] |
+| 5.02 | Bad Gateway                  | [RFC7252] |
+| 5.03 | Service Unavailable          | [RFC7252] |
+| 5.04 | Gateway Timeout              | [RFC7252] |
+| 5.05 | Proxying Not Supported       | [RFC7252] |
++------+------------------------------+-----------+
+```
+
+### CoAP Method Codes
+Below is a snippet from https://tools.ietf.org/html/rfc7252 containing the default CoAP method codes:
+```
++------+--------+-----------+
+| Code | Name   | Reference |
++------+--------+-----------+
+| 0.01 | GET    | [RFC7252] |
+| 0.02 | POST   | [RFC7252] |
+| 0.03 | PUT    | [RFC7252] |
+| 0.04 | DELETE | [RFC7252] |
++------+--------+-----------+
+```
 
 ## License
 
