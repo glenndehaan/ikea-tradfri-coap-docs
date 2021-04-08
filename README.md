@@ -6,6 +6,8 @@ How can you communicate to your Ikea tradfri gateway/hub through coap-client. Te
    * [Ikea Tradfri CoAP Docs](#ikea-tradfri-coap-docs)
       * [Table of Contents](#table-of-contents)
       * [Install coap-client](#install-coap-client)
+         * [Linux](#linux)
+         * [Windows](#windows)
       * [Authenticate](#authenticate)
       * [The URL](#the-url)
       * [Devices](#devices)
@@ -59,9 +61,19 @@ How can you communicate to your Ikea tradfri gateway/hub through coap-client. Te
 
 ## Install coap-client
 Before you can talk to you Ikea gateway/hub you need to install the coap-client:
-1. Download the `install-coap-client.sh` from github.
-2. Chmod the file so you can run it.
+
+### Linux
+1. Download the `install-coap-client.sh` from github (you find this script in the scripts folder of the repository).
+2. Chmod the file, so you can run it.
 3. Run the file as root.
+
+### Windows
+With thanks to Stefan Thoolen (@Garrcomm)
+
+1. Download and install `Visual Studio 2019 CE with workload "Desktop development with C++"`
+2. Download and install `OpenSSL v1.1.1k including development files`
+3. Download the `build-libcoap-win-x64.cmd` from github (you find this script in the scripts folder of the repository).
+4. Run the file as administrator.
 
 ## Authenticate
 First we need to create a preshared key. This key can then be used to authenticate yourself:
