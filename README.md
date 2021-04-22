@@ -120,8 +120,7 @@ The result will look something similar to this:
   "3":{
     "0":"IKEA of Sweden",
     "1":"TRADFRI bulb E27 WW 806lm",
-    "3":"2.3.050",
-    "7":16643
+    "3":"2.3.050"
   },
   "5750":2
 }
