@@ -140,7 +140,7 @@ Numeric key | Type    | Description
 3.1         | string  | Product name
 3.3         | string  | Firmware version
 3.9         | integer | Battery status, 0 to 100 (not available in the example above since bulbs don't have batteries)
-5750        | integer | Device type (stands for Bulb)
+5750        | integer | Device type (2 stands for Bulb)
 
 ## Groups
 
