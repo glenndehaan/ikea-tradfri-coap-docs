@@ -1,5 +1,5 @@
 @echo off
-set LIBCOAP_URL=https://github.com/obgm/libcoap/archive/develop.zip
+set LIBCOAP_URL=https://github.com/obgm/libcoap/archive/refs/tags/v4.3.0-rc1.zip
 set OPENSSL_INSTALL_PATH=%ProgramFiles%\OpenSSL-Win64
 set VISUAL_STUDIO_IDE_PATH=%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\Common7\IDE
 
