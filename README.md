@@ -44,6 +44,10 @@ How can you communicate to your Ikea tradfri gateway/hub through coap-client. Te
     * [Blind](#blind)
         * [Your first blind](#your-first-blind)
         * [Payload](#payload-3)
+    * [Air Purifier](#air-purifier)
+        * [Your first air purifier](#your-first-air-purifier)
+        * [Payload](#payload-4)
+        * [Additional Info](#additional-info)
     * [Endpoints](#endpoints-1)
         * [Global](#global)
         * [Gateway](#gateway)
@@ -413,7 +417,7 @@ Please note: If you are using another HEX value then these the lamp will default
 ```
 
 ### More Colors
-Ikea RGB bulbs can produce more colors then the list above.
+Ikea RGB bulbs can produce more colors than the list above.
 
 They can produce all colors in the xyY color space.
 
@@ -427,7 +431,7 @@ coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "3311": ["5709
 ```
 
 ## Plug
-The Ikea plug was introduced around oktober 2018.
+The Ikea plug was introduced around October 2018.
 
 Also this device can be controlled with the same api.
 
@@ -451,9 +455,9 @@ Here is an example payload for coap-client with explanation what each field does
 ```
 
 ## Blind
-The Ikea blinds where introduced around august 2019.
+The Ikea blinds where introduced around August 2019.
 
-Also this device can be controlled with the same api.
+Also, this device can be controlled with the same api.
 
 ### Your first blind
 To change position of a blind use the following command:
@@ -467,11 +471,53 @@ Here is an example payload for coap-client with explanation what each field does
 {
   "15015": [
     {
-      "5536": 0.0, // position (0 to 100)
+      "5536": 0.0 // position (0 to 100)
     }
   ]
 }
 ```
+
+## Air Purifier
+The Ikea Air Purifier was introduced around April 2021.
+
+Also, this device can be controlled with the same api.
+
+### Your first air purifier
+To change the fan mode of the air purifier use the following command:
+```
+coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "15025": [{ "5900": 50 }] }' "coaps://$TF_GATEWAYIP:5684/15001/$TF_DEVICEID"
+```
+
+### Payload
+Here is an example payload for coap-client with explanation what each field does:
+```json5
+{
+  "15025": [
+    {
+      "5900": 50, // fan mode (0 = Off, 1 = Auto, 10 = Level 1, 20 = Level 2, 30 = Level 3, 40 = Level 4, 50 = Level 5)
+      "5908": 10, // fan speed
+      "5905": false, // lock/unlock control buttons
+      "5906": false // enables/disables the status LED's
+    }
+  ]
+}
+```
+
+### Additional Info
+This device can also report back additional information. The codes are described below:
+
+| Code  | Description               | Type    |
+|-------|---------------------------|---------|
+| 5907  | Air Quality               | Number  |
+| 5905  | Controls Locked           | Boolean |
+| 5900  | Fan Mode                  | Number  |
+| 5908  | Fan Speed                 | Number  |
+| 5904  | Total Filter Lifetime     | Number  |
+| 5902  | Filter Runtime            | Number  |
+| 5910  | Filter Remaining Lifetime | Number  |
+| 5903  | Filter Status             | Number  |
+| 5906  | Status LEDs               | Boolean |
+| 5909  | Total Motor Runtime       | Number  |
 
 ## Endpoints
 
@@ -502,6 +548,7 @@ Please note: You need to use `-m post` for the reboot command to work.
 | 3311  | Light/Bulb    | Array |
 | 3312  | Plug          | Array |
 | 15015 | Blind         | Array |
+| 15025 | Air Purifier  | Array |
 
 ### General parameters
 | Code | Description   | Type   |
