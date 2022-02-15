@@ -2,6 +2,8 @@
 
 How can you communicate to your Ikea tradfri gateway/hub through coap-client. Tested with Tradfri hub version 1.3.0014, 1.8.0025 and 1.12.0.
 
+> Note: After 3 Years of rocking Ikea tradfri hardware I gave up. After several bugs/crashes and even several hardware failures I switched to Philips Hue (yes yes I know you get what you paid for, but waking up in the middle of the night because all lights turned on since there was a firmware update running was not fun anymore). However, I will still try to maintain these docs as much as possible, and I will also still look at new issues created on this repository to help here I can. So if you have more information you want me to add into this guide don't hesitate to open an issue, And I'm happy to add it to the docs.
+
 ## Table of Contents
 * [Ikea Tradfri CoAP Docs](#ikea-tradfri-coap-docs)
     * [Table of Contents](#table-of-contents)
