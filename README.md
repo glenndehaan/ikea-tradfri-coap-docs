@@ -47,7 +47,6 @@ How can you communicate to your Ikea tradfri gateway/hub through coap-client. Te
     * [Air Purifier](#air-purifier)
         * [Your first air purifier](#your-first-air-purifier)
         * [Payload](#payload-4)
-        * [Additional Info](#additional-info)
     * [Endpoints](#endpoints-1)
         * [Global](#global)
         * [Gateway](#gateway)
@@ -59,6 +58,7 @@ How can you communicate to your Ikea tradfri gateway/hub through coap-client. Te
         * [Bulb parameters](#bulb-parameters)
         * [Plug parameters](#plug-parameters)
         * [Blind parameters](#blind-parameters)
+        * [Air Purifier parameters](#air-purifier-parameters)
     * [CoAP Protocol](#coap-protocol)
         * [CoAP Response Codes](#coap-response-codes)
         * [CoAP Method Codes](#coap-method-codes)
@@ -503,22 +503,6 @@ Here is an example payload for coap-client with explanation what each field does
 }
 ```
 
-### Additional Info
-This device can also report back additional information. The codes are described below:
-
-| Code  | Description               | Type    |
-|-------|---------------------------|---------|
-| 5907  | Air Quality               | Number  |
-| 5905  | Controls Locked           | Boolean |
-| 5900  | Fan Mode                  | Number  |
-| 5908  | Fan Speed                 | Number  |
-| 5904  | Total Filter Lifetime     | Number  |
-| 5902  | Filter Runtime            | Number  |
-| 5910  | Filter Remaining Lifetime | Number  |
-| 5903  | Filter Status             | Number  |
-| 5906  | Status LEDs               | Boolean |
-| 5909  | Total Motor Runtime       | Number  |
-
 ## Endpoints
 
 ### Global
@@ -597,6 +581,20 @@ Please note: You need to use `-m post` for the reboot command to work.
 | Code | Description | Type  |
 |------|-------------|-------|
 | 5536 | Position    | Float |
+
+### Air Purifier parameters
+| Code  | Description               | Type    |
+|-------|---------------------------|---------|
+| 5907  | Air Quality               | Number  |
+| 5905  | Controls Locked           | Boolean |
+| 5900  | Fan Mode                  | Number  |
+| 5908  | Fan Speed                 | Number  |
+| 5904  | Total Filter Lifetime     | Number  |
+| 5902  | Filter Runtime            | Number  |
+| 5910  | Filter Remaining Lifetime | Number  |
+| 5903  | Filter Status             | Number  |
+| 5906  | Status LEDs               | Boolean |
+| 5909  | Total Motor Runtime       | Number  |
 
 ## CoAP Protocol
 
