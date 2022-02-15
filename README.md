@@ -348,6 +348,8 @@ If someone has more information about the button please open an issue of create 
 
 ## Bulbs
 
+> Note: It seems that in bulb firmware v2.3.086 the default behaviour for a non-existing hue color changed. Previously the bulb would go to the default warm color, but now the bulb turns off while reporting it's still on. See more details in issue #31
+
 ### Your first bulb
 To set the brightness of your first bulb to 50% use the following command:
 ```
