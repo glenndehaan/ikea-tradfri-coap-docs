@@ -386,10 +386,20 @@ The following colors where taken from the Ikea Android app (these could be used 
 Please note: If you are using another HEX value then these the lamp will default to the Warm Glow color.
 
 #### Cold / Warm Bulbs
+Lightbulbs running on firmware less then ±2.3.087
 ```
 "f5faf6": "White",
 "f1e0b5": "Warm",
 "efd275": "Glow"
+```
+
+Lightbulbs running on firmware ±2.3.087 and up:
+```
+"efd275": "Glow"
+"f1e0b5": "Warm"
+"f2eccf": "LightWarm"
+"f3f3e3": "LightWhite"
+"f5faf6": "White"
 ```
 
 #### RGB Bulbs
