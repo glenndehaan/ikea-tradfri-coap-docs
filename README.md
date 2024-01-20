@@ -437,7 +437,7 @@ To understand how this color space works take a look at the diagram below:
 
 To create your own color you need define two values (x and y) from 0 to 65535 with this command:
 ```
-coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "3311": ["5709": 65535, "5710": 65535] }' "coaps://$TF_GATEWAYIP:5684/15001/$TF_DEVICEID"
+coap-client -m put -u "$TF_USERNAME" -k "$TF_PRESHARED_KEY" -e '{ "3311": [{"5709": 65535, "5710": 65535}] }' "coaps://$TF_GATEWAYIP:5684/15001/$TF_DEVICEID"
 ```
 
 ## Plug
