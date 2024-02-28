@@ -9,6 +9,7 @@ How can you communicate to your Ikea tradfri gateway/hub through coap-client. Te
     * [Table of Contents](#table-of-contents)
     * [Install coap-client](#install-coap-client)
         * [Linux](#linux)
+        * [MacOS](#macos)
         * [Windows](#windows)
     * [Authenticate](#authenticate)
     * [The URL](#the-url)
@@ -73,6 +74,15 @@ Before you can talk to you Ikea gateway/hub you need to install the coap-client:
 1. Download the `install-coap-client.sh` from github (you find this script in the scripts folder of the repository).
 2. Chmod the file, so you can run it.
 3. Run the file as root.
+
+### MacOS
+Note: this is pretty much the same like on Linux, except that you use !['homebrew'](https://github.com/Homebrew) for the missing tools and libraries:
+1. Use 'brew install automake' and 'brew install local' to install build-tools
+   You might need to have 'Xcode' installed which is free on the App Store
+2. Download the `install-coap-client.sh` from github (you find this script in the scripts folder of the repository).
+3. Open 'Terminal'-app, cd to 'Downloads' directory and type 'chmod +x install-coap-client.sh', so you can run it.
+4. Run the install-script with 'sudo ./install-coap-client.sh' (you must use a user-account with administrator privileges to do so).
+   You will now find '/usr/local/bin/coap-client' on the system. (You may want to add '/usr/local/bin/' to your $PATH environment variable.)
 
 ### Windows
 With thanks to Stefan Thoolen (@Garrcomm)
